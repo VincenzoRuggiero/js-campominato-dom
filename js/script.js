@@ -8,7 +8,6 @@ function createGrid() {
   for (i = 1; i <= 100; i++) {
     let squareElem = document.createElement("div");
     squareElem.classList.add("squareCSS");
-    squareElem.innerHTML = i;
     gridElem.appendChild(squareElem);
   }
 
@@ -25,6 +24,7 @@ function createBombs() {
   } else {
     randomIndex = getRandomNumber(1, 101);
   }
+  return randomIndex;
 }
 
 function getRandomNumber(min, max) {
@@ -39,3 +39,5 @@ buttonElem.addEventListener("click", function () {
 
   createGrid();
 });
+
+console.log(createBombs(), bombsArr);
