@@ -1,13 +1,16 @@
 let gridElem = document.querySelector(".grid");
 let buttonElem = document.querySelector(".btn");
 
-let bombsArr = [];
-let randomNum;
+let bombsArr;
+let randomIndex;
 
 function createGrid() {
   for (i = 1; i <= 100; i++) {
     let squareElem = document.createElement("div");
     squareElem.classList.add("squareCSS");
+    squareElem.addEventListener("click", function () {
+      console.log(i);
+    });
     gridElem.appendChild(squareElem);
   }
 
@@ -15,16 +18,16 @@ function createGrid() {
 }
 
 function createBombs() {
+  bombsArr = [];
+
   while (bombsArr.length < 16) {
     let randomIndex = getRandomNumber(1, 101);
+    if (!bombsArr.includes(randomIndex)) {
+      bombsArr.push(randomIndex);
+    }
   }
 
-  if (!bombsArr.includes(randomIndex)) {
-    bombsArr.push(randomIndex);
-  } else {
-    randomIndex = getRandomNumber(1, 101);
-  }
-  return randomIndex;
+  return;
 }
 
 function getRandomNumber(min, max) {
@@ -36,8 +39,7 @@ function getRandomNumber(min, max) {
 
 buttonElem.addEventListener("click", function () {
   gridElem.innerHTML = "";
-
+  createBombs();
+  console.log(bombsArr);
   createGrid();
 });
-
-console.log(createBombs(), bombsArr);
